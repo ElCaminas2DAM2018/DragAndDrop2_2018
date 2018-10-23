@@ -71,7 +71,15 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
                     v.setBackground(normalShape);
+                    View viewOrigin = (View) event.getLocalState();
+                    // ViewGroup ownerOrigin = (ViewGroup) viewOrigin.getParent();
+                    // if (v==ownerOrigin) { //Although this "if" is not necessary. But better not to make it 4 times
                     System.out.println("ACTION_DRAG_ENDED");
+                    if (!event.getResult()) {
+                        viewOrigin.setVisibility(View.VISIBLE);
+                        //     }
+
+                    }
                 default:
                     break;
             }
